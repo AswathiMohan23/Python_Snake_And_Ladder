@@ -1,11 +1,12 @@
 from random import randint
 
 
-
-
 class game_methods:
+
     current_position = 0
     previous_position = 0
+    count = 0
+
     def __init__(self):
         self.ladder_value = None
         self.snake_value = None
@@ -15,6 +16,7 @@ class game_methods:
         return random_number
 
     def optionCheck(self):
+        self.count = self.count +1
         option = randint(0, 2)
         return option
 
@@ -26,6 +28,7 @@ class game_methods:
         print("\t\t\t\t\t\t\t\t\t\tmove ahead by ", ladder_value)
         if self.current_position == 100:
             print("\t\t\t\t\t\t\t\t\t\tyour current position : 100 !!!! \n\t\t\t\t\t\t\t\t\t\tYou won")
+            print("\n\t\t\t\t\t\tthe dice was thrown ", self.count, " times")
         elif self.current_position > 100:
             print("\t\t\t\t\t\t\t\t\t\tyour current position : ", self.current_position, "\n\t\t\t\t\t\t\t\t\t\tyou reached beyond 100 so go back to your previous position and wait till you get 100")
             self.current_position = self.previous_position
