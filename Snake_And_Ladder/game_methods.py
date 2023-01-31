@@ -87,7 +87,7 @@ class game_methods:
             print(
                 "\t\t\t\t\t\t\t\t\t\t\t\t\tyour current position : 100 !!!!\n\t\t\t\t\t\t\t\t\t\t\t\t\tthe dice was thrown ",
                 self.count, " times")
-            print("\n***************------------------- You won the game ---------------------****************")
+            print("\n***************-------------------",self.player," You won the game ---------------------****************")
         elif self.current_position > 100:
             print("\t\t\t\t\t\t\t\t\t\t\t\t\tyour current position : ", self.current_position,
                   "\nyou reached beyond 100 so go back to your previous position and wait till you get 100")
@@ -100,10 +100,10 @@ class game_methods:
         self.player = self.other_player
         self.other_player = temp
 
-    def game(self, player, other_player):
+    def game(self):
         try:
             while self.current_position < 100:
-                print("\nits your turn ", player, end="")
+                print("\nits your turn ", self.player, end="")
                 self.random_value = self.randomCheck()
                 self.normal()
         except Exception:
@@ -113,13 +113,13 @@ class game_methods:
     def player_turns(self, player1, player2):
         turn = self.player_check()
         if turn == 1:
-            player = player1
-            other_player = player2
-            self.game(player, other_player)
+            self.player = player1
+            self.other_player = player2
+            self.game()
         else:
-            player = player2
-            other_player = player1
-            self.game(player, other_player)
+            self.player = player2
+            self.other_player = player1
+            self.game()
 
 
 if __name__ == "__main__":
